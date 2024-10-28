@@ -5,5 +5,5 @@ function ExemploParam(_Request, Response) {
 module.exports = {
     main: ExemploParam,
     path: '/',
-    method: 'get'
+    method: 'GET'
 }

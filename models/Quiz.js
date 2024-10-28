@@ -1,15 +1,15 @@
 class Quiz {
-    constructor(id, dataQuiz, idCurso, idDisciplina, idUsuario, idQuestoes01, idQuestoes02, idQuestoes03, idQuestoes04, idQuestoes05, pontuacao) {
+    constructor(id, dataQuiz, idCurso, idDisciplina, idUsuario, questoes01, questoes02, questoes03, questoes04, questoes05, pontuacao) {
         this.id = id;
         this.dataQuiz = dataQuiz;
         this.idCurso = idCurso;
         this.idDisciplina = idDisciplina;
         this.idUsuario = idUsuario;
-        this.idQuestoes01 = idQuestoes01;
-        this.idQuestoes02 = idQuestoes02;
-        this.idQuestoes03 = idQuestoes03;
-        this.idQuestoes04 = idQuestoes04;
-        this.idQuestoes05 = idQuestoes05;
+        this.questoes01 = questoes01;
+        this.questoes02 = questoes02;
+        this.questoes03 = questoes03;
+        this.questoes04 = questoes04;
+        this.questoes05 = questoes05;
         this.pontuacao = pontuacao;
     }
 }

@@ -30,3 +30,7 @@ Pronto! Você agora tem um controlador funcional em apenas uma única função. 
 
 Caso você queira iniciar o servidor, execute em seu `terminal` o seguinte comando: `npm install` e espere instalar as dependências, após a instalação, você pode abrir o servidor executando o comando `npm run open` (ou caso queira apenas iniciar o servidor `npm start`).
 Prontinho! Agora você tem acesso ao servidor HTTP!
+
+# Segurança
+
+Como vocês ainda não aprenderam sobre segurança, autenticação e criptografia, vamos evitar a segurança nesse projeto. Simples assim. As senhas não serão criptografadas, as credenciais serão expostas ao público, e é isso.

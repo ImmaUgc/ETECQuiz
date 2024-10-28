@@ -1,7 +1,7 @@
 class Alternativa {
-    constructor(id, idQuestao, enunciado, correta) {
+    constructor(id, questao, enunciado, correta) {
         this.id = id;
-        this.idQuestao = idQuestao;
+        this.questao = questao;
         this.enunciado = enunciado;
         this.correta = correta;
     }

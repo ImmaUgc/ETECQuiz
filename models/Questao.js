@@ -1,9 +1,9 @@
 class Questao {
-    constructor(id, enunciado, pontuacao, idDisciplina) {
+    constructor(id, enunciado, pontuacao, disciplina) {
         this.id = id;
         this.enunciado = enunciado;
         this.pontuacao = pontuacao;
-        this.idDisciplina = idDisciplina;
+        this.disciplina = disciplina;
     }
 }
 
