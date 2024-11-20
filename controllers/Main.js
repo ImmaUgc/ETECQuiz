@@ -1,9 +1,12 @@
-function ExemploParam(_Request, Response) {
-    Response.send('Leia o README.md!');
+const Path = require('node:path');
+
+function main(_Request, Response) {
+    Response.view('Document');
 }
 
 module.exports = {
-    main: ExemploParam,
+    main,
     path: '/',
-    method: 'GET'
+    method: 'GET',
+    authenticated: false
 }

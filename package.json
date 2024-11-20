@@ -5,15 +5,20 @@
   "main": "Main.js",
   "scripts": {
     "start": "node .",
-    "open": "start http://localhost:8080 & node ."
+    "open": "start http://localhost:8080 & node .",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^2.0.1",
+    "dotenv": "^16.4.5",
     "express": "5.0.1",
     "mysql2": "3.11.3",
     "quiz": "file:"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }

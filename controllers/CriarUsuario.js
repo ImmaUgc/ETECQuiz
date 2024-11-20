@@ -1,7 +1,7 @@
 const Usuario = require("../models/Usuario");
 const { CriarUsuario } = require("../utils/Database");
 
-function NovoUsuario(Request, Response) {
+function main(Request, Response) {
     const body =  Request.body;
 
     CriarUsuario(new Usuario(
@@ -16,7 +16,8 @@ function NovoUsuario(Request, Response) {
 }
 
 module.exports = {
-    main: NovoUsuario,
+    main,
     path: '/user',
-    method: 'POST'
+    method: 'POST',
+    authenticated: false
 }

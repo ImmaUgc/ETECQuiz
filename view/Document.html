@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação da API</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+        a { text-decoration: none; font-weight: bold; }
+        h1 { text-align: center; }
+        .endpoint { margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        .endpoint h2 { margin: 0 0 10px; }
+        .auth-required { color: red; font-weight: bold; }
+        .auth-not-required { color: green; font-weight: bold; }
+        .body-params { margin-left: 20px; }
+        .warn { margin-bottom: 20px; padding: 15px; border: 1px solid #fffc3c; background-color: #fffec9; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Documentação da API</h1>
+
+    <div class="warn">
+        <h2>Autenticação</h2>
+        <p>Para autenticar um usuario, você precisa passar pelo header <strong>Authorization</strong>, uma chave de autenticação nesse formato: "<strong>Basic login:senha</strong>". O login e senha precisam estar criptografado por Base64 (a função <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/btoa" target="_blank">btoa</a> do JavaScript)</p>
+        <p>Exemplo: <strong>Authorization: 'Basic ' + btoa('login:senha')</strong></p>
+    </div>
+
+    <div class="endpoint">
+        <h2>POST {Request.host}/user</h2>
+        <p><strong>Método:</strong> POST</p>
+        <p><strong>Autenticação necessária:</strong> <span class="auth-not-required">Não</span></p>
+        <p><strong>Descrição:</strong> Cria um novo usuário no sistema.</p>
+        <p><strong>Corpo da Requisição:</strong></p>
+        <div class="body-params">
+            <p><strong>login:</strong> string - Nome de usuário desejado.</p>
+            <p><strong>email:</strong> string - Endereço de email do usuário.</p>
+            <p><strong>senha:</strong> string - Senha do usuário.</p>
+        </div>
+        <p><strong>Resposta:</strong> Retorna um código HTTP 200 em caso de sucesso.</p>
+    </div>
+
+    <div class="endpoint">
+        <h2>POST {Request.host}/user/current-user</h2>
+        <p><strong>Método:</strong> POST</p>
+        <p><strong>Autenticação necessária:</strong> <span class="auth-required">Sim</span></p>
+        <p><strong>Descrição:</strong> Retorna dados do usuario autenticado</p>
+        <p><strong>Corpo da Requisição:</strong></p>
+        <div class="body-params">
+            <p><strong>login:</strong> string - Nome de usuário do usuário existente.</p>
+            <p><strong>senha:</strong> string - Senha do usuário.</p>
+        </div>
+        <p><strong>Resposta:</strong> Retorna o status de autenticação do usuário em formato JSON.</p>
+    </div>
+</div>
+
+</body>
+</html>

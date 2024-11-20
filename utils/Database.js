@@ -3,22 +3,20 @@ const Usuario = require('../models/Usuario');
 
 let Pool; /* Pool é um conjunto de conexões no banco de dados que é gerenciado de forma automática pelo MySQL, abrindo e fechando conexões quando necessário. Essa pool será carregada uma única vez no código inteiro. */
 
-async function CriarPoolGlobal() {
-    /* Conecte o seu banco de dados MySQL localmente com as procedures e tables do repositório do banco de dados */
-    /* Tables: https://github.com/ronaldo-mendonca-dos-santos/Quiz-SQL/blob/main/Banco1 */
-    /* Procedures (Exemplos): https://github.com/ronaldo-mendonca-dos-santos/Quiz-SQL/blob/main/exemplos-procedures.sql */
-    /* Procedures: https://github.com/ronaldo-mendonca-dos-santos/Quiz-SQL/blob/main/procedures */
-    Pool = await mysql2.createPool({
+function CriarPoolGlobal() {
+    /* Caso queira fazer testes com o banco de dados, aqui estão as procedures e tables para criar o banco localmente */
+    /* Tables: https://github.com/ronaldo-mendonca-dos-santos/Quiz-SQL/blob/main/Banco1.sql */
+    /* Procedures (Exemplos): https://github.com/ronaldo-mendonca-dos-santos/Quiz-SQL/blob/main/Exemplosprocedures.sql */
+    /* Procedures: https://github.com/ronaldo-mendonca-dos-santos/Quiz-SQL/blob/main/procedures.sql */
+    Pool = mysql2.createPool({
         host: 'autorack.proxy.rlwy.net',
-        port: 41305,
+        port: 12162,
         user: 'root',
-        password: 'gSWHvIHQRrTXNBbulfmYMvQSzcYwXmuT',
+        password: process.env['DATABASE_PASSWORD'], /* Peça a senha para o pessoal do BD e coloque no .env */
         database: 'railway',
         connectionLimit: 100 /* Limite de conexões abertas de forma simultânea */
     });
 }
-
-/* Uma função que adiciona um usuário ao banco de dados recebendo como parâmetro a clase Usuario (en Usuario.js) */
 
 async function CriarUsuario(usuario) {
     await Pool.execute('CALL inserirUsuario (?, ?, ?, 0)', [
@@ -28,10 +26,8 @@ async function CriarUsuario(usuario) {
     ]);
 }
 
-/* Uma função que consulte um usuário pelo ID fornecido */
-
-async function ConsultarUsuarioPeloID(id) {
-    let [[[ usuario ]]] = await Pool.execute('CALL consultarUsuarioPorID (?)', [ id ]);
+async function ConsultarUsuarioPorID(id) {
+    const [[[ usuario ]]] = await Pool.execute('CALL consultarUsuarioPorID (?)', [ id ]);
 
     if(!usuario) return null;
     
@@ -44,8 +40,38 @@ async function ConsultarUsuarioPeloID(id) {
     );
 }
 
+async function ConsultarUsuarioPorLogin(login) {
+    const [[[ usuario ]]] = await Pool.execute('CALL consultarUsuarioPorLogin (?)', [ login ]);
+
+    if(!usuario) return null;
+    
+    return new Usuario(
+        usuario.id,
+        usuario.loginUsuario,
+        usuario.email,
+        usuario.senha,
+        usuario.pontuacao
+    );
+}
+
+async function Login(login, password) {
+    const usuario = await ConsultarUsuarioPorLogin(login);
+
+    if(!usuario) return null;
+
+    await Pool.execute('CALL ValidarSenha (?, ?, ?, @resultado)', [ usuario.id, login, password ]);
+
+    const [[{ validation }]] = await Pool.query('SELECT @resultado AS validation'); /* Provavelmente, uma forma péssima de se validar uma senha em um projeto REAL. (Mas aqui não tem problema) */
+
+    if(!validation) return null;
+
+    return await ConsultarUsuarioPorID(usuario.id);
+}
+
 module.exports = {
     CriarPoolGlobal,
     CriarUsuario,
-    ConsultarUsuarioPeloID
+    ConsultarUsuarioPorID,
+    ConsultarUsuarioPorLogin,
+    Login
 }
