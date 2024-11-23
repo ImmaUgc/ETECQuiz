@@ -4,6 +4,7 @@ const Path = require('node:path'); /* Manipulação de textos (strings) para cam
 const { config } =  require('dotenv');
 const { CriarPoolGlobal, Login } = require('./utils/Database');
 const { json } = require('body-parser');
+const cors = require('cors');
 
 config(); /* Configura o arquivo .env (para variáveis de ambiente) */
 
@@ -11,6 +12,7 @@ const App = Express(); /* Inicializar o Express */
 const Port = 8080; /* Porta do servidor */
 
 App.use(json({ type: 'application/json' })); /* Converte o body em JSON */
+App.use(cors({ origin: '*' }))
 
 CriarPoolGlobal(); /* Inicializa uma pool no banco de dados */
 const Controllers = FileSystem.readdirSync('controllers'); /* Lê o diretório controllers (a pasta chamada "controllers") e retorna uma lista com os nomes dos arquivos .js */

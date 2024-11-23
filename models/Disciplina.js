@@ -1,8 +1,7 @@
 class Disciplina {
-    constructor(id, curso, disciplina, sigla) {
+    constructor(id, nome, sigla) {
         this.id = id;
-        this.curso = curso;
-        this.disciplina = disciplina;
+        this.nome = nome;
         this.sigla = sigla;
     }
 }

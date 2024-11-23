@@ -54,6 +54,51 @@
         </div>
         <p><strong>Resposta:</strong> Retorna o status de autenticação do usuário em formato JSON.</p>
     </div>
+
+    <div class="endpoint">
+        <h2>POST {Request.host}/user/count</h2>
+        <p><strong>Método:</strong> PUT</p>
+        <p><strong>Autenticação necessária:</strong> <span class="auth-required">Sim</span></p>
+        <p><strong>Descrição:</strong> Contabiliza os pontos das alternativas passadas</p>
+        <p><strong>Corpo da Requisição:</strong></p>
+        <div class="body-params">
+            <p><strong>alternativas:</strong> Array(integer) - IDs das questões que o usuário respondeu.</p>
+        </div>
+        <p><strong>Resposta:</strong> Retorna o usuário autenticado com os dados atualizados</p>
+    </div>
+
+    <div class="endpoint">
+        <h2>POST {Request.host}/quiz/:id_disciplina</h2>
+        <p><strong>Método:</strong> GET</p>
+        <p><strong>Autenticação necessária:</strong> <span class="auth-not-required">Não</span></p>
+        <p><strong>Descrição:</strong> Exibe todas as questões e alternativas de uma disciplina.</p>
+        <p><strong>Parametros da Requisição:</strong></p>
+        <div class="body-params">
+            <p><strong>id_disciplina:</strong> ID da disciplina</p>
+        </div>
+        <p><strong>Resposta:</strong> Retorna todas as questões e alternativas de uma disciplina..</p>
+    </div>
+
+    <div class="endpoint">
+        <h2>POST {Request.host}/quiz/disciplinas</h2>
+        <p><strong>Método:</strong> GET</p>
+        <p><strong>Autenticação necessária:</strong> <span class="auth-not-required">Não</span></p>
+        <p><strong>Descrição:</strong> Exibe todas as disciplinas do curso de DS</p>
+        <p><strong>Resposta:</strong> Retorna todas as disciplinas do curso de DS.</p>
+    </div>
+
+    <div class="endpoint">
+        <h2>POST {Request.host}/quiz/disciplina/:id_disciplina</h2>
+        <p><strong>Método:</strong> GET</p>
+        <p><strong>Autenticação necessária:</strong> <span class="auth-not-required">Não</span></p>
+        <p><strong>Descrição:</strong> Exibe uma disciplina</p>
+        <p><strong>Parametros da Requisição:</strong></p>
+        <div class="body-params">
+            <p><strong>id_disciplina:</strong> ID da disciplina</p>
+        </div>
+        <p><strong>Resposta:</strong> Retorna as informações de um disciplina.</p>
+    </div>
+
 </div>
 
 </body>

@@ -95,7 +95,7 @@ describe('Sistema de autorização do back-end', () => {
 
         console.log(Response.data);
 
-        // expect(Response.status)
-        // .toBe(200);
+        expect(Response.status)
+        .toBe(200);
     });
 });
