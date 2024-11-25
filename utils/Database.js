@@ -7,10 +7,6 @@ const Disciplina = require('../models/Disciplina');
 let Pool; /* Pool é um conjunto de conexões no banco de dados que é gerenciado de forma automática pelo MySQL, abrindo e fechando conexões quando necessário. Essa pool será carregada uma única vez no código inteiro. */
 
 function CriarPoolGlobal() {
-    /* Caso queira fazer testes com o banco de dados, aqui estão as procedures e tables para criar o banco localmente */
-    /* Tables: https://github.com/ronaldo-mendonca-dos-santos/Quiz-SQL/blob/main/Banco1.sql */
-    /* Procedures (Exemplos): https://github.com/ronaldo-mendonca-dos-santos/Quiz-SQL/blob/main/Exemplosprocedures.sql */
-    /* Procedures: https://github.com/ronaldo-mendonca-dos-santos/Quiz-SQL/blob/main/procedures.sql */
     Pool = mysql2.createPool({
         host: 'autorack.proxy.rlwy.net',
         port: 12162,

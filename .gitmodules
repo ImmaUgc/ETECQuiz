@@ -1,0 +1,3 @@
+[submodule "Quiz-SQL"]
+	path = Quiz-SQL
+	url = https://github.com/ronaldo-mendonca-dos-santos/Quiz-SQL

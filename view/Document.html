@@ -24,12 +24,12 @@
 
     <div class="warn">
         <h2>Autenticação</h2>
-        <p>Para autenticar um usuario, você precisa passar pelo header <strong>Authorization</strong>, uma chave de autenticação nesse formato: "<strong>Basic login:senha</strong>". O login e senha precisam estar criptografado por Base64 (a função <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/btoa" target="_blank">btoa</a> do JavaScript)</p>
+        <p>Para autenticar um usuário, você precisa passar pelo header <strong>Authorization</strong>, uma chave de autenticação nesse formato: "<strong>Basic login:senha</strong>". O login e senha precisam estar criptografados em Base64 (utilizando a função <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/btoa" target="_blank">btoa</a> do JavaScript).</p>
         <p>Exemplo: <strong>Authorization: 'Basic ' + btoa('login:senha')</strong></p>
     </div>
 
     <div class="endpoint">
-        <h2>POST https://{Request.host}/user</h2>
+        <h2>https://{Request.host}/user</h2>
         <p><strong>Método:</strong> POST</p>
         <p><strong>Autenticação necessária:</strong> <span class="auth-not-required">Não</span></p>
         <p><strong>Descrição:</strong> Cria um novo usuário no sistema.</p>
@@ -43,10 +43,10 @@
     </div>
 
     <div class="endpoint">
-        <h2>POST https://{Request.host}/user/current-user</h2>
-        <p><strong>Método:</strong> POST</p>
+        <h2>https://{Request.host}/user/current-user</h2>
+        <p><strong>Método:</strong> GET</p>
         <p><strong>Autenticação necessária:</strong> <span class="auth-required">Sim</span></p>
-        <p><strong>Descrição:</strong> Retorna dados do usuario autenticado</p>
+        <p><strong>Descrição:</strong> Retorna dados do usuário autenticado.</p>
         <p><strong>Corpo da Requisição:</strong></p>
         <div class="body-params">
             <p><strong>login:</strong> string - Nome de usuário do usuário existente.</p>
@@ -56,47 +56,47 @@
     </div>
 
     <div class="endpoint">
-        <h2>POST https://{Request.host}/user/count</h2>
+        <h2>https://{Request.host}/user/count</h2>
         <p><strong>Método:</strong> PUT</p>
         <p><strong>Autenticação necessária:</strong> <span class="auth-required">Sim</span></p>
-        <p><strong>Descrição:</strong> Contabiliza os pontos das alternativas passadas</p>
+        <p><strong>Descrição:</strong> Contabiliza os pontos das alternativas passadas.</p>
         <p><strong>Corpo da Requisição:</strong></p>
         <div class="body-params">
             <p><strong>alternativas:</strong> Array(integer) - IDs das questões que o usuário respondeu.</p>
         </div>
-        <p><strong>Resposta:</strong> Retorna o usuário autenticado com os dados atualizados</p>
+        <p><strong>Resposta:</strong> Retorna o usuário autenticado com os dados atualizados.</p>
     </div>
 
     <div class="endpoint">
-        <h2>POST https://{Request.host}/quiz/:id_disciplina</h2>
+        <h2>https://{Request.host}/quiz/:id_disciplina</h2>
         <p><strong>Método:</strong> GET</p>
         <p><strong>Autenticação necessária:</strong> <span class="auth-not-required">Não</span></p>
         <p><strong>Descrição:</strong> Exibe todas as questões e alternativas de uma disciplina.</p>
-        <p><strong>Parametros da Requisição:</strong></p>
+        <p><strong>Parâmetros da Requisição:</strong></p>
         <div class="body-params">
             <p><strong>id_disciplina:</strong> ID da disciplina</p>
         </div>
-        <p><strong>Resposta:</strong> Retorna todas as questões e alternativas de uma disciplina..</p>
+        <p><strong>Resposta:</strong> Retorna todas as questões e alternativas de uma disciplina.</p>
     </div>
 
     <div class="endpoint">
-        <h2>POST https://{Request.host}/quiz/disciplinas</h2>
+        <h2>https://{Request.host}/quiz/disciplinas</h2>
         <p><strong>Método:</strong> GET</p>
         <p><strong>Autenticação necessária:</strong> <span class="auth-not-required">Não</span></p>
-        <p><strong>Descrição:</strong> Exibe todas as disciplinas do curso de DS</p>
+        <p><strong>Descrição:</strong> Exibe todas as disciplinas do curso de DS.</p>
         <p><strong>Resposta:</strong> Retorna todas as disciplinas do curso de DS.</p>
     </div>
 
     <div class="endpoint">
-        <h2>POST https://{Request.host}/quiz/disciplina/:id_disciplina</h2>
+        <h2>https://{Request.host}/quiz/disciplina/:id_disciplina</h2>
         <p><strong>Método:</strong> GET</p>
         <p><strong>Autenticação necessária:</strong> <span class="auth-not-required">Não</span></p>
-        <p><strong>Descrição:</strong> Exibe uma disciplina</p>
-        <p><strong>Parametros da Requisição:</strong></p>
+        <p><strong>Descrição:</strong> Exibe uma disciplina.</p>
+        <p><strong>Parâmetros da Requisição:</strong></p>
         <div class="body-params">
             <p><strong>id_disciplina:</strong> ID da disciplina</p>
         </div>
-        <p><strong>Resposta:</strong> Retorna as informações de um disciplina.</p>
+        <p><strong>Resposta:</strong> Retorna as informações de uma disciplina.</p>
     </div>
 
 </div>
