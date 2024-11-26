@@ -23,6 +23,7 @@ describe('Sistema quiz', () => {
         );
         const Response = await Request.json();
 
+        Response.data.senha = '';
         console.log(Response.data);
 
         expect(Response.status)
@@ -48,6 +49,7 @@ describe('Sistema quiz', () => {
         );
         const Response = await Request.json();
 
+        Response.data.senha = '';
         console.log(Response.data);
 
         expect(Response.status)

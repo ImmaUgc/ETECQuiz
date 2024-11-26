@@ -93,6 +93,7 @@ describe('Sistema de autorização do back-end', () => {
         );
         const Response = await Request.json();
 
+        Response.data.senha = '';
         console.log(Response.data);
 
         expect(Response.status)
