@@ -10,6 +10,7 @@ async function main(Request, Response) {
 
     const pontuacao = await ContabilizarPontos(Request.authenticated.id, alternativas);
     Request.authenticated.pontuacao = pontuacao;
+
     Response.json(Request.authenticated);
 }
 

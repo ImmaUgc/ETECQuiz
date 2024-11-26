@@ -124,7 +124,7 @@ async function ContabilizarPontos(usuario_id, alternativas_ids) {
     for(const alternativa_id of alternativas_ids) {
         const [[[ alternativa ]]] = await Pool.execute(`CALL consultarAlternativaPorID (?)`, [ alternativa_id ]);
         
-        if(!alternativa.correta) continue;
+        if(!alternativa?.correta) continue;
 
         const [[[ questao ]]] = await Pool.execute(`CALL consultarQuestaoPorID (?)`, [ alternativa.idQuestao ]);
 
