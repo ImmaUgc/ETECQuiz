@@ -18,11 +18,15 @@ function CriarPoolGlobal() {
 }
 
 async function CriarUsuario(usuario) {
-    await Pool.execute('CALL inserirUsuario (?, ?, ?, 0)', [
-        usuario.login,
-        usuario.email,
-        usuario.senha
-    ]);
+    try {
+        await Pool.execute('CALL inserirUsuario (?, ?, ?, 0)', [
+            usuario.login,
+            usuario.email,
+            usuario.senha
+        ]);
+    } catch(sql_error) {
+        return sql_error.sqlMessage;
+    }
 }
 
 async function ConsultarUsuarioPorID(id) {

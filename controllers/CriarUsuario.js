@@ -1,10 +1,10 @@
 const Usuario = require("../models/Usuario");
 const { CriarUsuario } = require("../utils/Database");
 
-function main(Request, Response) {
+async function main(Request, Response) {
     const body =  Request.body;
 
-    CriarUsuario(new Usuario(
+    const result = await CriarUsuario(new Usuario(
         0 /* O id não será necessário, afinal, estaremos postando um novo usuário. */,
         body.login,
         body.email,
@@ -12,7 +12,11 @@ function main(Request, Response) {
         0 /* Ao criar um usuário, a pontuação por padrão é 0 */
     ));
 
-    Response.sendStatus(200);
+    if(!result) {
+        Response.send('Usuário cadastrado com sucesso!');
+    } else {
+        Response.status(409).send(result);
+    }
 }
 
 module.exports = {
