@@ -37,8 +37,10 @@ jobs:
 
       - name: Iniciar servidor
         env:
-          PORT: 8080
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
         run: npm start &
 
       - name: Rodar testes
+        env:
+          TEST_USER: ${{ secrets.TEST_USER }}
         run: npm test
