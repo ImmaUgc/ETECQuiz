@@ -1,6 +1,6 @@
 const { config } = require('dotenv');
 
-config();
+config({ override: false });
 
 describe('Sistema de autorização do back-end', () => {
     test('Sem header de autorização', async () => {

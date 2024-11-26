@@ -1,6 +1,7 @@
 const { config } = require('dotenv');
 
-config();
+config({ override: false });
+
 const Token = btoa(process.env['TEST_USER']);
 describe('Sistema quiz', () => {
     test('Contabilizar ponto (Alternativas corretas)', async () => {

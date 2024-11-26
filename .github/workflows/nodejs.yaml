@@ -36,6 +36,8 @@ jobs:
         run: npm install
 
       - name: Iniciar servidor
+        env:
+          PORT: 8080
         run: npm start &
 
       - name: Rodar testes

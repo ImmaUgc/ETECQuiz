@@ -6,10 +6,10 @@ const { CriarPoolGlobal, Login } = require('./utils/Database');
 const { json } = require('body-parser');
 const cors = require('cors');
 
-config(); /* Configura o arquivo .env (para variáveis de ambiente) */
+config({ override: false }); /* Configura o arquivo .env (para variáveis de ambiente) */
 
 const App = Express(); /* Inicializar o Express */
-const Port = 8080; /* Porta do servidor */
+const Port = process.env['PORT'] ?? 8080; /* Porta do servidor */
 
 App.use(json({ type: 'application/json' })); /* Converte o body em JSON */
 App.use(cors({ origin: '*' }))
